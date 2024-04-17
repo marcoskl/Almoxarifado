@@ -1,0 +1,19 @@
+<?php
+session_start();
+
+$username = $_POST['username'];
+$password = $_POST['password'];
+
+
+
+if ($username == NULL || $password == NULL) {
+
+	echo "<script>alert('Você deve digitar seu nome e senha');</script>";
+	echo "<script> window.location.href='../login.php'</script>";
+	exit;
+} else {
+
+	require_once 'Models/connect.php';
+
+	(new Connect)->login($username, $password);
+}
